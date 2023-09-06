@@ -39,7 +39,7 @@ export class NuevoDetalleComponent implements OnInit {
   ngOnInit(): void {
 
     this.listarPedido();
-    this.listarProducto();
+    // this.listarProducto();
 
   }
 
@@ -61,22 +61,22 @@ export class NuevoDetalleComponent implements OnInit {
   }
 
 
-  listarProducto() {
-    let productos = {
-        accion: 'listarProducto',
-    };
-    this.servicio.postData(productos).subscribe(
-        async (res: any) => {
-            if (res.estado == true) {
-                this.productos = res.productos;
-            } else {
-            }
-        },
-        (error) => {
-            console.log('Error en la conexión');
-        }
-    );
-  }
+  // listarProducto() {
+  //   let productos = {
+  //       accion: 'listarProducto',
+  //   };
+  //   this.servicio.postData(productos).subscribe(
+  //       async (res: any) => {
+  //           if (res.estado == true) {
+  //               this.productos = res.productos;
+  //           } else {
+  //           }
+  //       },
+  //       (error) => {
+  //           console.log('Error en la conexión');
+  //       }
+  //   );
+  // }
 
   onChangePedido(event: any) {
     this.idPedido = event.target.value;

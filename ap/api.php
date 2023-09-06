@@ -395,25 +395,172 @@ echo $envio;
 // nueva tabla pedidos
 
 
+//////////////////////////////////////////////CRUD DE PEDIDOS ////////////////////////////////////////////////////
+///////////////////-----------------------------LISTAR PEDIDOS---------------//////////////////////////
+
+
+if ($post['accion'] == 'listarPedidos') {
+    $sentencia = "SELECT * FROM pedido ORDER BY codigo_pedido ASC;";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $pedidos = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($pedidos, array(
+            'codigo' => $row['codigo_pedido'],
+            'fecha_pedido' => $row['fecha_pedido'],
+            'fecha_esperada' => $row['fecha_esperada'],
+            'fecha_entrega' => $row['fecha_entrega'],
+            'estado' => $row['estado'],           
+            'comentarios' => $row['comentarios'],           
+            'codigo_cliente' => $row['codigo_cliente'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'pedidos'=>$pedidos));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+
+
+///////////////////////------------AÑADIR PEDIDOS---------/////////////////////
+if ($post['accion']=='addPedido'){
+    $sentencia = sprintf(
+        "INSERT INTO pedido (
+        fecha_pedido, fecha_esperada, fecha_entrega,
+        estado,comentarios,codigo_cliente
+        ) values ('%s', '%s', '%s', '%s', '%s', '%s');",
+        $post['fecha_pedido'],$post['fecha_esperada'],$post['fecha_entrega'],$post['estado'],$post['comentarios'],$post['codigo_cliente']);
+    
+
+        $result=mysqli_query($mysql,$sentencia);
+        if($result)
+        {
+            $envio=json_encode(array('estado'=>true));
+        }
+        else
+        {
+            $envio=json_encode(array('estado'=>false));
+        }
+        echo $envio;
+        }
+
+
+// nueva tabla detalle_pedidos
+
+
+//////////////////////////////////////////////CRUD DE DETALLE_PEDIDOS ////////////////////////////////////////////////////
+///////////////////-----------------------------LISTAR DETALLE_PEDIDOS---------------//////////////////////////
+
+
+if ($post['accion'] == 'listarDetalles') {
+    $sentencia = "SELECT * FROM detalle_pedido ORDER BY codigo_detalle ASC;";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $detalles = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($detalles, array(
+            'codigo' => $row['codigo_detalle'],
+            'codigo_pedido' => $row['codigo_pedido'],
+            'codigo_producto' => $row['codigo_producto'],
+            'cantidad' => $row['cantidad'],
+            'precio_unidad' => $row['precio_unidad'],           
+            'numero_linea' => $row['numero_linea'],           
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'detalles'=>$detalles));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+
+
+///////////////////////------------AÑADIR DETALLE---------/////////////////////
+if ($post['accion']=='addDetalle'){
+    $sentencia = sprintf(
+        "INSERT INTO detalle_pedido (
+        codigo_pedido, codigo_producto,cantidad,
+        precio_unidad,numero_linea
+        ) values ('%s', '%s', '%s', '%s', '%s');",
+        $post['codigo_pedido'],$post['codigo_producto'],$post['cantidad'],$post['precio_unidad'],$post['numero_linea']);
+    
+
+        $result=mysqli_query($mysql,$sentencia);
+        if($result)
+        {
+            $envio=json_encode(array('estado'=>true));
+        }
+        else
+        {
+            $envio=json_encode(array('estado'=>false));
+        }
+        echo $envio;
+        }
+
+
+
+//listar de prodcutos y pedidos 
 
 
 
 
+if ($post['accion'] == 'listarPedido') {
+    $sentencia = "SELECT * FROM pedido ORDER BY codigo_pedido ASC;";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $pedidos = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($pedidos, array(
+            'codigo' => $row['codigo_pedido'],
+            'fecha_pedido' => $row['fecha_pedido'],
+            'fecha_esperada' => $row['fecha_esperada'],
+            'fecha_entrega' => $row['fecha_entrega'],
+            'estado' => $row['estado'],           
+            'comentarios' => $row['comentarios'],           
+            'codigo_cliente' => $row['codigo_cliente'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'pedidos'=>$pedidos));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
 
 
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
+if ($post['accion'] == 'listarProducto') {
+    $sentencia = "SELECT * FROM producto ORDER BY codigo_producto ASC;";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $productos = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($productos, array(
+            'codigo' => $row['codigo_producto'],
+            'nombre' => $row['nombre'],
+            'gama' => $row['gama'],
+            'dimensiones' => $row['dimensiones'],
+            'proveedor' => $row['proveedor'],
+            'descripcion' => $row['descripcion'],
+            'stock' => $row['cantidad_en_stock'],
+            'precio_venta' => $row['precio_venta'],
+            'precio_proveedor' => $row['precio_proveedor'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'productos'=>$productos));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
 
 
 ?>
