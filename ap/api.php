@@ -400,7 +400,10 @@ echo $envio;
 
 
 if ($post['accion'] == 'listarPedidos') {
-    $sentencia = "SELECT * FROM pedido ORDER BY codigo_pedido ASC;";
+    $sentencia = "SELECT p.*, c.nombre_cliente 
+                 FROM pedido p
+                 INNER JOIN cliente c ON p.codigo_cliente = c.codigo_cliente
+                 ORDER BY p.codigo_pedido DESC;";
     $result = mysqli_query($mysql, $sentencia);
     $f = mysqli_num_rows($result);
     $pedidos = array();
@@ -412,16 +415,17 @@ if ($post['accion'] == 'listarPedidos') {
             'fecha_entrega' => $row['fecha_entrega'],
             'estado' => $row['estado'],           
             'comentarios' => $row['comentarios'],           
-            'codigo_cliente' => $row['codigo_cliente'],
+            'nombre_cliente' => $row['nombre_cliente'], // Cambiamos 'codigo_cliente' por 'nombre_cliente'
         ));
     }
     if ($f > 0) {
-        $envio = json_encode(array('estado'=>true, 'pedidos'=>$pedidos));
+        $envio = json_encode(array('estado' => true, 'pedidos' => $pedidos));
     } else {
-        $envio = json_encode(array('estado'=>false));
+        $envio = json_encode(array('estado' => false));
     }
     echo $envio;
 }
+
 
 
 
@@ -506,38 +510,8 @@ if ($post['accion']=='addDetalle'){
 
 //listar de prodcutos y pedidos 
 
-
-
-
-if ($post['accion'] == 'listarPedido') {
-    $sentencia = "SELECT * FROM pedido ORDER BY codigo_pedido ASC;";
-    $result = mysqli_query($mysql, $sentencia);
-    $f = mysqli_num_rows($result);
-    $pedidos = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-        array_push($pedidos, array(
-            'codigo' => $row['codigo_pedido'],
-            'fecha_pedido' => $row['fecha_pedido'],
-            'fecha_esperada' => $row['fecha_esperada'],
-            'fecha_entrega' => $row['fecha_entrega'],
-            'estado' => $row['estado'],           
-            'comentarios' => $row['comentarios'],           
-            'codigo_cliente' => $row['codigo_cliente'],
-        ));
-    }
-    if ($f > 0) {
-        $envio = json_encode(array('estado'=>true, 'pedidos'=>$pedidos));
-    } else {
-        $envio = json_encode(array('estado'=>false));
-    }
-    echo $envio;
-
-
-}
-
-
-if ($post['accion'] == 'listarProducto') {
-    $sentencia = "SELECT * FROM producto ORDER BY codigo_producto ASC;";
+if ($post['accion'] == 'listarProductos') {
+    $sentencia = "SELECT * FROM producto ORDER BY nombre ASC;";
     $result = mysqli_query($mysql, $sentencia);
     $f = mysqli_num_rows($result);
     $productos = array();
@@ -564,3 +538,6 @@ if ($post['accion'] == 'listarProducto') {
 
 
 ?>
+
+
+  

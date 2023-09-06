@@ -104,7 +104,7 @@ export class NuevoDetalleComponent implements OnInit {
   
     this.servicio.postData(datos).subscribe((res: any) => {
         if (res.estado == true) {
-            this.toastr.success('<span class="now-ui-icons ui-1_bell-53"></span>Pedido agregado con éxito', '', {
+            this.toastr.success('<span class="now-ui-icons ui-1_bell-53"></span>Detalle agregado con éxito', '', {
                 timeOut: 8000,
                 closeButton: true,
                 enableHtml: true,
@@ -113,7 +113,7 @@ export class NuevoDetalleComponent implements OnInit {
             });
             this.router.navigateByUrl('/detalles');
         } else {
-            this.toastr.error('<span class="now-ui-icons ui-1_bell-53"></span>Error al agregar el Pedido', '', {
+            this.toastr.error('<span class="now-ui-icons ui-1_bell-53"></span>Error al agregar el Detalle', '', {
                 timeOut: 8000,
                 closeButton: true,
                 enableHtml: true,
@@ -124,6 +124,5 @@ export class NuevoDetalleComponent implements OnInit {
         }
     });
   }
-  
 
 }
