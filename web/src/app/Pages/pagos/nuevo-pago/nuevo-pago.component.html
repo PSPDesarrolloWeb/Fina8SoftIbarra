@@ -11,12 +11,12 @@
                         </div>
                         <div class="col-md-3 px-1">
                             <div class="form-group">
-                                <label>Forma_pago</label>
+                                <label>codigo_cliente</label>
                                 <select class="form-control" [(ngModel)]="idCliente"
                                     (change)="onChangeCliente($event)">
                                     <option value="">Seleccione una opción</option>
-                                    <option *ngFor="let datos of clientes" [value]="datos.codigo">
-                                        {{ datos.nombre }} {{ datos.apellido1 }}</option>
+                                    <option *ngFor="let datos of clientes" [value]="datos.codigo_cliente">
+                                        {{ datos.nombre1 }} {{ datos.apellido }}</option>
                                 </select>
                             </div>
                         </div>
@@ -32,17 +32,11 @@
                 <div class="card-body">
                     <form>
                         <div class="row">
-                            <div class="col-md-4 px-1">
-                                <div class="form-group">
-                                    <label>codigo_cliente</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese un nombre" id="codigo_cliente"
-                                        name="codigo_cliente" [(ngModel)]="codigo_cliente">
-                                </div>
-                            </div>
+                           
                             <div class="col-md-4 px-1">
                                 <div class="form-group">
                                     <label>fecha_pago</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese un fecha_pago"
+                                    <input type="date" class="form-control" placeholder="Ingrese un fecha_pago"
                                         id="fecha_pago" name="fecha_pago" [(ngModel)]="fecha_pago">
                                 </div>
                             </div>
