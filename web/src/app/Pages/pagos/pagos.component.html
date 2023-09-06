@@ -27,7 +27,7 @@
                   <td>{{ datos.fecha_pago }}</td>
                   <td>{{ datos.total }}</td>
                   <td>
-                    <button type="button" class="btn btn-success" [routerLink]="'/editar-cliente/' + datos.id">✏️</button>
+                    <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
                     <button type="button" class="btn btn-default"(click)="deleteCliente(datos.id)">🗑️</button>
                   </td>
                 </tr>

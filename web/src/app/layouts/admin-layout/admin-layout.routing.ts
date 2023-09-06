@@ -13,6 +13,8 @@ import { EditarEmpleadoComponent } from '../../Pages/empleados/editar-empleado/e
 //importar 
 
 import { NuevoPagoComponent } from '../../Pages/pagos/nuevo-pago/nuevo-pago.component';
+import { EditarPagoComponent } from '../../Pages/pagos/editar-pago/editar-pago.component';
+
 
 
 
@@ -32,6 +34,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'pagos',    component: PagosComponent },
 
     { path: 'nuevo-pago',    component: NuevoPagoComponent },
+
+    { path: 'editar-pago/:id',    component: EditarPagoComponent },
+
 
 
   

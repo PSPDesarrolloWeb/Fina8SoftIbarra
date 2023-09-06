@@ -15,12 +15,13 @@ export class NuevoPagoComponent implements OnInit {
 
 
   forma_pago: string = '';
+  idCliente: string='';
   codigo_cliente: string = '';
   fecha_pago: string = '';
   total: string = '';
 
   // idPago: string = '';
-  idCliente: string='';
+
   // limitecred: string = '';
 
 
@@ -72,6 +73,7 @@ listarClientes() {
     
     onChangeCliente(event: any) {
       this.idCliente = event.target.value;
+      console.log(this.idCliente)
   }
 
   listarPagos() {
@@ -97,7 +99,7 @@ addPago() {
   let datos = {
       accion: 'addPago',
       forma_pago: this.forma_pago,
-      codigo_cliente: this.codigo_cliente,
+      codigo_cliente: this.idCliente,
       fecha_pago: this.fecha_pago,
       total: this.total,
       // emprep: this.idPago,

@@ -3,7 +3,7 @@
 <div class="main-content">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" *ngFor="let datos of datosPago">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-6">
@@ -52,7 +52,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <button class="btn btn-danger full-width-btn" 
-                                    (click)="addPago()" >Añadir Pagos</button>
+                                    (click)="updatePago(datos)"  >Añadir Pagos</button>
                                 </div>
                             </div>
                         </div>
