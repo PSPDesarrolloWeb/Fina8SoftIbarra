@@ -88,4 +88,40 @@ export class NuevoDetalleComponent implements OnInit {
     console.log(this.idProducto)
   }
 
+
+  addDetalle() {
+    let datos = {
+        accion: 'addDetalle',
+        codigo_pedido: this.idPedido,
+        codigo_producto: this.idProducto,
+        cantidad: this.cantidad,
+        precio_unidad: this.precio_unidad,
+        numero_linea: this.numero_linea,
+        // emprep: this.idPago,
+  
+    }
+  
+    this.servicio.postData(datos).subscribe((res: any) => {
+        if (res.estado == true) {
+            this.toastr.success('<span class="now-ui-icons ui-1_bell-53"></span>Detalle agregado con éxito', '', {
+                timeOut: 8000,
+                closeButton: true,
+                enableHtml: true,
+                toastClass: 'alert alert-success alert-with-icon',
+                positionClass: 'toast-top-right'
+            });
+            this.router.navigateByUrl('/detalles');
+        } else {
+            this.toastr.error('<span class="now-ui-icons ui-1_bell-53"></span>Error al agregar el Detalle', '', {
+                timeOut: 8000,
+                closeButton: true,
+                enableHtml: true,
+                toastClass: 'alert alert-danger alert-with-icon',
+                positionClass: 'toast-top-right'
+            });
+            console.log(res);
+        }
+    });
+  }
+
 }

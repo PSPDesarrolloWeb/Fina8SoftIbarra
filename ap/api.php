@@ -510,10 +510,6 @@ if ($post['accion']=='addDetalle'){
 
 //listar de prodcutos y pedidos 
 
-
-
-
-
 if ($post['accion'] == 'listarProductos') {
     $sentencia = "SELECT * FROM producto ORDER BY nombre ASC;";
     $result = mysqli_query($mysql, $sentencia);
@@ -542,3 +538,6 @@ if ($post['accion'] == 'listarProductos') {
 
 
 ?>
+
+
+  
