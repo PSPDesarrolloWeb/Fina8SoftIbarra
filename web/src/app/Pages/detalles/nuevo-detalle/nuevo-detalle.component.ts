@@ -21,8 +21,8 @@ export class NuevoDetalleComponent implements OnInit {
 
 
   codigo_pedido: string = '';
-  idPedido: string='';
-  idProducto: string='';
+  idPedido: string = '';
+  idProducto: string = '';
   codigo_producto: string = '';
   cantidad: string = '';
   precio_unidad: string = '';
@@ -39,53 +39,53 @@ export class NuevoDetalleComponent implements OnInit {
   ngOnInit(): void {
 
     this.listarPedido();
-    // this.listarProducto();
+    this.listarProducto();
 
   }
 
   listarPedido() {
     let pedidos = {
-        accion: 'listarPedido',
+      accion: 'listarPedidos',
     };
     this.servicio.postData(pedidos).subscribe(
-        async (res: any) => {
-            if (res.estado == true) {
-                this.pedidos = res.pedidos;
-            } else {
-            }
-        },
-        (error) => {
-            console.log('Error en la conexión');
+      async (res: any) => {
+        if (res.estado == true) {
+          this.pedidos = res.pedidos;
+        } else {
         }
+      },
+      (error) => {
+        console.log('Error en la conexión pedidos');
+      }
     );
   }
 
 
-  // listarProducto() {
-  //   let productos = {
-  //       accion: 'listarProducto',
-  //   };
-  //   this.servicio.postData(productos).subscribe(
-  //       async (res: any) => {
-  //           if (res.estado == true) {
-  //               this.productos = res.productos;
-  //           } else {
-  //           }
-  //       },
-  //       (error) => {
-  //           console.log('Error en la conexión');
-  //       }
-  //   );
-  // }
+  listarProducto() {
+    let productos = {
+      accion: 'listarProductos',
+    };
+    this.servicio.postData(productos).subscribe(
+      async (res: any) => {
+        if (res.estado == true) {
+          this.productos = res.productos;
+        } else {
+        }
+      },
+      (error) => {
+        console.log('Error en la conexión');
+      }
+    );
+  }
 
   onChangePedido(event: any) {
     this.idPedido = event.target.value;
     console.log(this.idPedido)
-}
+  }
 
-onChangeProducto(event: any) {
-  this.idProducto = event.target.value;
-  console.log(this.idProducto)
-}
+  onChangeProducto(event: any) {
+    this.idProducto = event.target.value;
+    console.log(this.idProducto)
+  }
 
 }

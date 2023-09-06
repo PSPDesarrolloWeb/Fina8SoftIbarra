@@ -5,75 +5,68 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5 class="title">Añade un nuevo Pedido</h5>
-                        </div>
-                    </div>
+                    <h5 class="title">Añade un nuevo Pedido</h5>
                 </div>
                 <div class="card-body">
                     <form>
-
                         <div class="row">
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Fecha Pedido</label>
-                                <input type="date" class="form-control" placeholder="Ingrese una Fecha" id="fecha_pedido"
-                                    name="fecha_pedido" [(ngModel)]="fecha_pedido">
+                            <div class="col-md-12 px-1">
+                                <div class="form-group">
+                                    <label>Cliente</label>
+                                    <select class="form-control" [(ngModel)]="idCliente"
+                                        (change)="onChangeCliente($event)">
+                                        <option value="">Seleccione una opción</option>
+                                        <option *ngFor="let datos of clientes" [value]="datos.id">
+                                            {{ datos.nombre1 }} {{ datos.apellido }}</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Fecha Esperada</label>
-                                <input type="date" class="form-control" placeholder="Ingrese una Fecha" id="fecha_esperada"
-                                    name="fecha_esperada" [(ngModel)]="fecha_esperada">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Fecha Pedido</label>
+                                    <input type="date" class="form-control" placeholder="Ingrese una Fecha"
+                                        id="fecha_pedido" name="fecha_pedido" [(ngModel)]="fecha_pedido">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Fecha Esperada</label>
+                                    <input type="date" class="form-control" placeholder="Ingrese una Fecha"
+                                        id="fecha_esperada" name="fecha_esperada" [(ngModel)]="fecha_esperada">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Fecha Entrega</label>
+                                    <input type="date" class="form-control" placeholder="Ingrese una Fecha"
+                                        id="fecha_entrega" name="fecha_entrega" [(ngModel)]="fecha_entrega">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Estado</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un Estado" id="estado"
+                                        name="estado" [(ngModel)]="estado">
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Fecha Entrega</label>
-                                <input type="date" class="form-control" placeholder="Ingrese una Fecha" id="fecha_entrega"
-                                    name="fecha_entrega" [(ngModel)]="fecha_entrega">
+                        <div class="row">
+                            <div class="col-md-12 px-1">
+                                <div class="form-group">
+                                    <label>Comentarios</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un Comentario"
+                                        id="comentarios" name="comentarios" [(ngModel)]="comentarios">
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" placeholder="Ingrese un Estado" id="estado"
-                                    name="estado" [(ngModel)]="estado">
-                            </div>
-                        </div>
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Comentarios</label>
-                                <input type="text" class="form-control" placeholder="Ingrese un Comentarios" id="comentarios"
-                                    name="comentarios" [(ngModel)]="comentarios">
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Codigo Cliente</label>
-                                <select class="form-control" [(ngModel)]="idCliente"
-                                    (change)="onChangeCliente($event)">
-                                    <option value="">Seleccione una opción</option>
-                                    <option *ngFor="let datos of clientes" [value]="datos.id">
-                                        {{ datos.nombre1 }} {{ datos.apellido }}</option>
-                                </select>
-                            </div>
-                        </div>
-
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button class="btn btn-danger full-width-btn" 
-                                 (click)="addPedido()" >Añadir Pedido</button>
+                                    <button class="btn btn-danger full-width-btn" (click)="addPedido()">Añadir
+                                        Pedido</button>
                                 </div>
                             </div>
                         </div>
