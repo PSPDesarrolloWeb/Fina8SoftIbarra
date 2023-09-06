@@ -28,7 +28,7 @@
                   <td>{{ datos.total }}</td>
                   <td>
                     <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
-                    <button type="button" class="btn btn-default"(click)="deletePago(datos.id)">🗑️</button>
+                    <button type="button" class="btn btn-default"(click)="deletePago(datos.codigo)">🗑️</button>
                   </td>
                 </tr>
               </tbody>
