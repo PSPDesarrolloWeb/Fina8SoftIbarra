@@ -29,7 +29,7 @@
                   <td>{{ datos.fecha_entrega }}</td>
                   <td>{{ datos.estado }}</td>
                   <td>{{ datos.comentarios }}</td>
-                  <td>{{ datos.codigo_cliente }}</td>
+                  <td>{{ datos.nombre_cliente }}</td>
                   <td>
                     <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
                     <button type="button" class="btn btn-default"(click)="deletePago(datos.id)">🗑️</button>

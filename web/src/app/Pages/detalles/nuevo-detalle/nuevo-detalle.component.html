@@ -13,67 +13,59 @@
                 </div>
                 <div class="card-body">
                     <form>
-
                         <div class="row">
-                
-
-                            <div class="col-md-3 px-1">
+                            <div class="col-md-6 px-1">
                                 <div class="form-group">
-                                    <label>Codigo Pedidos</label>
+                                    <label>Pedidos</label>
                                     <select class="form-control" [(ngModel)]="idPedido"
                                         (change)="onChangePedido($event)">
                                         <option value="">Seleccione una opción</option>
-                                        <option *ngFor="let datos of pedidos" [value]="datos.id">
-                                             {{ datos.fecha_pedido }}</option>
+                                        <option *ngFor="let datos of pedidos" [value]="datos.codigo">
+                                            {{ datos.nombre_cliente }} - {{ datos.fecha_pedido }}</option>
                                     </select>
                                 </div>
                             </div>
-    
-                            <!-- <div class="col-md-3 px-1">
+
+                            <div class="col-md-6 px-1">
                                 <div class="form-group">
-                                    <label>Codigo Cliente</label>
+                                    <label>Productos</label>
                                     <select class="form-control" [(ngModel)]="idProducto"
                                         (change)="onChangeProducto($event)">
-                                        <option value="">Seleccione una opción</option>
-                                        <option *ngFor="let datos of productos" [value]="datos.id">
-                                             {{ datos.nombre }}</option>
+                                        <option value="">Seleccione un producto</option>
+                                        <option *ngFor="let datos of productos" [value]="datos.codigo">
+                                            {{ datos.nombre }}</option>
                                     </select>
                                 </div>
-                            </div> -->
-
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>cantidad</label>
-                                <input type="text" class="form-control" placeholder="Ingrese una Fecha" id="cantidad"
-                                    name="cantidad" [(ngModel)]="cantidad">
                             </div>
                         </div>
-
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>precio_unidad</label>
-                                <input type="text" class="form-control" placeholder="Ingrese un Estado" id="precio_unidad"
-                                    name="precio_unidad" [(ngModel)]="precio_unidad">
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Cantidad</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una Fecha"
+                                        id="cantidad" name="cantidad" [(ngModel)]="cantidad">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>numero_linea</label>
-                                <input type="text" class="form-control" placeholder="Ingrese un numero_linea" id="numero_linea"
-                                    name="numero_linea" [(ngModel)]="numero_linea">
+
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Precio por unidad</label>
+                                    <input type="text" class="form-control" placeholder="Precio por unidad"
+                                        id="precio_unidad" name="precio_unidad" [(ngModel)]="precio_unidad">
+                                </div>
                             </div>
-                        </div>
-
-
-                 
-
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>N° de línea</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un numero_linea"
+                                        id="numero_linea" name="numero_linea" [(ngModel)]="numero_linea">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <button class="btn btn-danger full-width-btn" 
-                                 >Añadir Pedido</button>
+                                    <button class="btn btn-danger full-width-btn" (click)="addDetalle()">Añadir Pedido</button>
                                 </div>
                             </div>
                         </div>
