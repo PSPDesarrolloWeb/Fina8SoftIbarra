@@ -460,13 +460,12 @@ if ($post['accion']=='addPedido'){
 
 
 if ($post['accion'] == 'listarDetalles') {
-    $sentencia = "SELECT * FROM detalle_pedido ORDER BY codigo_detalle ASC;";
+    $sentencia = "SELECT * FROM detalle_pedido ORDER BY codigo_pedido ASC;";
     $result = mysqli_query($mysql, $sentencia);
     $f = mysqli_num_rows($result);
     $detalles = array();
     while ($row = mysqli_fetch_assoc($result)) {
         array_push($detalles, array(
-            'codigo' => $row['codigo_detalle'],
             'codigo_pedido' => $row['codigo_pedido'],
             'codigo_producto' => $row['codigo_producto'],
             'cantidad' => $row['cantidad'],
