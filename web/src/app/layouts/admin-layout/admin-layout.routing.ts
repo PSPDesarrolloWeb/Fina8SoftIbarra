@@ -22,6 +22,8 @@ import { DetallesComponent } from '../../Pages/detalles/detalles.component';
 
 import { NuevoPedidoComponent } from '../../Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
 
+import { NuevoDetalleComponent } from '../../Pages/detalles/nuevo-detalle/nuevo-detalle.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: '',    component: DashboardComponent },
@@ -45,6 +47,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'nuevo-pago',    component: NuevoPagoComponent },
 
     { path: 'nuevo-pedido',    component: NuevoPedidoComponent },
+
+    { path: 'nuevo-detalle',    component: NuevoDetalleComponent },
 
     { path: 'editar-pago/:id',    component: EditarPagoComponent },
 

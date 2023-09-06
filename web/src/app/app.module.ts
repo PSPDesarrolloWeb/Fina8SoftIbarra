@@ -25,6 +25,7 @@ import { EditarPagoComponent } from './Pages/pagos/editar-pago/editar-pago.compo
 import { PedidosComponent } from './Pages/pedidos/pedidos.component';
 import { NuevoPedidoComponent } from './Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
 import { DetallesComponent } from './Pages/detalles/detalles.component';
+import { NuevoDetalleComponent } from './Pages/detalles/nuevo-detalle/nuevo-detalle.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { DetallesComponent } from './Pages/detalles/detalles.component';
     PedidosComponent,
     NuevoPedidoComponent,
     DetallesComponent,
+    NuevoDetalleComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
