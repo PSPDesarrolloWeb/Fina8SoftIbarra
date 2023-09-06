@@ -1,0 +1,129 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="title">Añade un nuevo cliente</h5>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Empleado encargado</label>
+                                <select class="form-control" [(ngModel)]="idEmpleado"
+                                    (change)="onChangeEmpleado($event)">
+                                    <option value="">Seleccione una opción</option>
+                                    <option *ngFor="let datos of empleados" [value]="datos.codigo">
+                                        {{ datos.nombre }} {{ datos.apellido1 }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Límite de crédito</label>
+                                <input type="text" class="form-control" placeholder="0.00" id="limitecred"
+                                    name="limitecred" [(ngModel)]="limitecred">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un nombre" id="nombre"
+                                        name="nombre" [(ngModel)]="nombre">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un apellido"
+                                        id="apellido" name="apellido" [(ngModel)]="apellido">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Nombre de contacto</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un nombre"
+                                        id="contacto" name="contacto" [(ngModel)]="contacto">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un # telefónico"
+                                        id="telefono" name="telefono" [(ngModel)]="telefono">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Fax</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un # fax" id="fax"
+                                        name="fax" [(ngModel)]="fax">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dirección 1</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una dirección"
+                                        id="dir1" name="dir1" [(ngModel)]="dir1">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dirección 2</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una dirección"
+                                        id="dir2" name="dir2" [(ngModel)]="dir2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una ciudad" id="ciudad"
+                                        name="ciudad" [(ngModel)]="ciudad">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Región</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una región" id="region"
+                                        name="region" [(ngModel)]="region">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>País</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una país" id="pais"
+                                        name="pais" [(ngModel)]="pais">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Código Postal</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un código postal"
+                                        id="cpostal" name="cpostal" [(ngModel)]="cpostal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-danger full-width-btn" (click)="addCliente()"
+                                        [disabled]="!camposLlenos()">Añadir Cliente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

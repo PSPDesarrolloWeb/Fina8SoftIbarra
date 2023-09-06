@@ -1,0 +1,54 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Lista de Clientes</h4>
+          <button type="button" class="btn btn-danger" [routerLink]="'/nuevo-cliente'">Nuevo Cliente</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive" style="overflow-x: auto;">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Contacto</th>
+                <th>Teléfono</th>
+                <th>Fax</th>
+                <th>Dirección</th>
+                <th>Locación</th>
+                <th>C.P.</th>
+                <th>Encargado</th>
+                <th>Límite de crédito</th>
+                <th>OP</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let datos of clientes; let i = index">
+                  <td>{{i + 1 }}</td>
+                  <td>{{ datos.nombre1 }} {{ datos.apellido}}</td>  
+                  <td>{{ datos.nombre2 }}</td>
+                  <td>{{ datos.telefono }}</td>
+                  <td>{{ datos.fax }}</td>
+                  <td>{{ datos.dir1 }} & {{ datos.dir2 }}</td>
+                  <td>{{ datos.ciudad || ' - ' }}/{{ datos.region || ' - '}}/{{ datos.pais || ' - '}}</td>
+                  <td>{{ datos.cpostal }}</td>
+                  <td>{{ datos.nombre_rep_ventas }}</td>
+                  <td>{{ datos.limitecred }}</td>
+                  <td>
+                    <button type="button" class="btn btn-success" [routerLink]="'/editar-cliente/' + datos.id">✏️</button>
+                    <button type="button" class="btn btn-default"(click)="deleteCliente(datos.id)">🗑️</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <button class="btn btn-primary floating-btn" (click)="scrollToTop()">
+    <i class="bi bi-chevron-up"></i>
+</button> -->
+</div>

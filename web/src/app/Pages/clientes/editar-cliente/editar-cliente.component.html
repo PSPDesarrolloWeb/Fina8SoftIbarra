@@ -1,0 +1,129 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" *ngFor="let datos of datosCliente">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="title">Actualizar datos del cliente</h5>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Empleado encargado</label>
+                                <select class="form-control"
+                                    (change)="onChangeEmpleado($event.target.value)">
+                                    <option *ngFor="let empleado of empleados" [value]="empleado.codigo"
+                                    [selected]="empleado.codigo === datos.emprep">
+                                        {{ empleado.nombre }} {{ empleado.apellido1 }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Límite de crédito</label>
+                                <input type="text" class="form-control" placeholder="0.00" id="limitecred"
+                                    name="limitecred" [(ngModel)]="datos.limitecred">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un nombre" id="nombre"
+                                        name="nombre" [(ngModel)]="datos.nombre">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un apellido"
+                                        id="apellido" name="apellido" [(ngModel)]="datos.apellido">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Nombre de contacto</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un nombre"
+                                        id="nombre1" name="nombre1" [(ngModel)]="datos.nombre1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un # telefónico"
+                                        id="telefono" name="telefono" [(ngModel)]="datos.telefono">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Fax</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un # fax" id="fax"
+                                        name="fax" [(ngModel)]="datos.fax">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dirección 1</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una dirección"
+                                        id="dir1" name="dir1" [(ngModel)]="datos.dir1">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dirección 2</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una dirección"
+                                        id="dir2" name="dir2" [(ngModel)]="datos.dir2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una ciudad" id="ciudad"
+                                        name="ciudad" [(ngModel)]="datos.ciudad">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Región</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una región" id="region"
+                                        name="region" [(ngModel)]="datos.region">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>País</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una país" id="pais"
+                                        name="pais" [(ngModel)]="datos.pais">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Código Postal</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un código postal"
+                                        id="cpostal" name="cpostal" [(ngModel)]="datos.cpostal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-danger full-width-btn" (click)="updateCliente(datos)">Actualizar Datos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+table th {
+    text-align: center;
+}
+
+table td {
+    text-align: center;
+}
+
+/* BOTON FLOTANTE DE SCROLL HACIA ARRIBA */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4444455b;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 9999;
+  }
+  
+  .floating-btn i {
+    font-size: 24px;
+    line-height: 50px;
+  }
+  
+  .floating-btn:hover {
+    background-color: #000000;
+  }
+  

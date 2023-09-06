@@ -1,0 +1,96 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-4 px-1">
+                            <h5 class="title">Añade un nuevo empleado</h5>
+                        </div>
+                        <div class="col-md-4 px-1">
+                            <div class="form-group">
+                                <label>Jefe Encargado</label>
+                                <select class="form-control" [(ngModel)]="idJefe"
+                                    (change)="onChangeJefe($event)">
+                                    <option value="">Seleccione una opción</option>
+                                    <option *ngFor="let datos of empleados" [value]="datos.codigo">
+                                        {{ datos.nombre }} {{ datos.apellido1 }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-1">
+                            <div class="form-group">
+                                <label>Puesto</label>
+                                <input type="text" class="form-control" placeholder="Ingrese un nombre" id="puesto"
+                                    name="puesto" [(ngModel)]="puesto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un nombre" id="nombre"
+                                        name="nombre" [(ngModel)]="nombre">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Apellido 1</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un apellido"
+                                        id="apellido1" name="apellido1" [(ngModel)]="apellido1">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Apellido 2</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un apellido"
+                                        id="apellido2" name="apellido2" [(ngModel)]="apellido2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Extensión</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una extensión"
+                                        id="extension" name="extension" [(ngModel)]="extension">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un email" id="email"
+                                        name="email" [(ngModel)]="email">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Oficina</label>
+                                    <select class="form-control" [(ngModel)]="idOficina"
+                                        (change)="onChangeOficina($event)">
+                                        <option value="">Seleccione una opción</option>
+                                        <option *ngFor="let datos of oficinas" [value]="datos.codigo">
+                                            {{ datos.codigo }}/{{ datos.ciudad }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-danger full-width-btn" (click)="addEmpleado()"
+                                        [disabled]="!camposLlenos()">Añadir Cliente</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
