@@ -5,27 +5,31 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Lista de Pagos</h4>
-          <button type="button" class="btn btn-danger" [routerLink]="'/nuevo-pago'">Nuevo Pago</button>
+          <h4 class="card-title"> Lista de Pedidos</h4>
+          <button type="button" class="btn btn-danger" [routerLink]="'/nuevo-pedido'">Nuevo Pedido</button>
         </div>
         <div class="card-body">
           <div class="table-responsive" style="overflow-x: auto;">
             <table class="table">
               <thead class=" text-primary">
                 <th>#</th>
-                <th>Forma de pago</th>
-                <th>Codigo cliente</th>
-                <th>Fecha pago</th>
-                <th>Total</th>
+                <th>Fecha_pedido</th>
+                <th>Fecha_esperada</th>
+                <th>Fecha_entrega</th>
+                <th>Estado</th>
+                <th>Comentarios</th>
+                <th>Codigo_cliente</th>
                 <th>OP</th>
               </thead>
               <tbody>
-                <tr *ngFor="let datos of pagos; let i = index">
+                <tr *ngFor="let datos of pedidos; let i = index">
                   <td>{{i + 1 }}</td>
-                  <td>{{ datos.forma_pago }}</td>
+                  <td>{{ datos.fecha_pedido }}</td>
+                  <td>{{ datos.fecha_esperada }}</td>
+                  <td>{{ datos.fecha_entrega }}</td>
+                  <td>{{ datos.estado }}</td>
+                  <td>{{ datos.comentarios }}</td>
                   <td>{{ datos.codigo_cliente }}</td>
-                  <td>{{ datos.fecha_pago }}</td>
-                  <td>{{ datos.total }}</td>
                   <td>
                     <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
                     <button type="button" class="btn btn-default"(click)="deletePago(datos.id)">🗑️</button>

@@ -21,6 +21,11 @@ export const ROUTES: RouteInfo[] = [
     // para la pantalla 
     { path: '/pagos', title: 'Pagos',  icon:'shopping_box', class: '' },
 
+    { path: '/pedidos', title: 'Pedidos',  icon:'shopping_box', class: '' },
+
+    { path: '/detalles', title: 'Detalles',  icon:'shopping_box', class: '' },
+
+
 
 ];
 

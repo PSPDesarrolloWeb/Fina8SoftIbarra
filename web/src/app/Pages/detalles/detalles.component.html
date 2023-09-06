@@ -5,27 +5,29 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Lista de Pagos</h4>
-          <button type="button" class="btn btn-danger" [routerLink]="'/nuevo-pago'">Nuevo Pago</button>
+          <h4 class="card-title"> Lista de Detalle Pedidos</h4>
+          <button type="button" class="btn btn-danger" [routerLink]="'/nuevo-pedido'">Nuevo Detalle Pedido</button>
         </div>
         <div class="card-body">
           <div class="table-responsive" style="overflow-x: auto;">
             <table class="table">
               <thead class=" text-primary">
                 <th>#</th>
-                <th>Forma de pago</th>
-                <th>Codigo cliente</th>
-                <th>Fecha pago</th>
-                <th>Total</th>
+                <th>codigo_pedido</th>
+                <th>codigo_producto</th>
+                <th>cantidad</th>
+                <th>precio_unidad</th>
+                <th>numero_linea</th>
                 <th>OP</th>
               </thead>
               <tbody>
-                <tr *ngFor="let datos of pagos; let i = index">
+                <tr *ngFor="let datos of detalles; let i = index">
                   <td>{{i + 1 }}</td>
-                  <td>{{ datos.forma_pago }}</td>
-                  <td>{{ datos.codigo_cliente }}</td>
-                  <td>{{ datos.fecha_pago }}</td>
-                  <td>{{ datos.total }}</td>
+                  <td>{{ datos.codigo_pedido }}</td>
+                  <td>{{ datos.codigo_producto }}</td>
+                  <td>{{ datos.cantidad }}</td>
+                  <td>{{ datos.precio_unidad }}</td>
+                  <td>{{ datos.numero_linea }}</td>
                   <td>
                     <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
                     <button type="button" class="btn btn-default"(click)="deletePago(datos.id)">🗑️</button>

@@ -45,7 +45,7 @@ export class PagosComponent implements OnInit {
 }
 
 
-deleteCliente(id: number) {
+deletePago(id: number) {
   swal.fire({
       title: 'Eliminar',
       text: "¿Estás seguro de eliminar este cliente?",

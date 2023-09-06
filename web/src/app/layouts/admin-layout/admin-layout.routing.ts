@@ -16,8 +16,11 @@ import { NuevoPagoComponent } from '../../Pages/pagos/nuevo-pago/nuevo-pago.comp
 import { EditarPagoComponent } from '../../Pages/pagos/editar-pago/editar-pago.component';
 
 
+import { PedidosComponent } from '../../Pages/pedidos/pedidos.component';
+import { DetallesComponent } from '../../Pages/detalles/detalles.component';
 
 
+import { NuevoPedidoComponent } from '../../Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -30,10 +33,18 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'nuevo-cliente',    component: NuevoClienteComponent },
     { path: 'editar-cliente/:id',    component: EditarClienteComponent },
 
+    { path: 'editar-pago/:id',    component: EditarPagoComponent },
+
     // ventanas 
     { path: 'pagos',    component: PagosComponent },
 
+    { path: 'pedidos',    component: PedidosComponent },
+
+    { path: 'detalles',    component: DetallesComponent },
+
     { path: 'nuevo-pago',    component: NuevoPagoComponent },
+
+    { path: 'nuevo-pedido',    component: NuevoPedidoComponent },
 
     { path: 'editar-pago/:id',    component: EditarPagoComponent },
 

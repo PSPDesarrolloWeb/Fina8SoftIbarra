@@ -22,6 +22,9 @@ import { EditarEmpleadoComponent } from './Pages/empleados/editar-empleado/edita
 import { PagosComponent } from './Pages/pagos/pagos.component';
 import { NuevoPagoComponent } from './Pages/pagos/nuevo-pago/nuevo-pago.component';
 import { EditarPagoComponent } from './Pages/pagos/editar-pago/editar-pago.component';
+import { PedidosComponent } from './Pages/pedidos/pedidos.component';
+import { NuevoPedidoComponent } from './Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
+import { DetallesComponent } from './Pages/detalles/detalles.component';
 
 
 @NgModule({
@@ -48,6 +51,9 @@ import { EditarPagoComponent } from './Pages/pagos/editar-pago/editar-pago.compo
     PagosComponent,
     NuevoPagoComponent,
     EditarPagoComponent,
+    PedidosComponent,
+    NuevoPedidoComponent,
+    DetallesComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
