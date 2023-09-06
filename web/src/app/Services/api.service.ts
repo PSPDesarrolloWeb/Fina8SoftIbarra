@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  server = 'http://localhost:8080/Final8SoftIbarra/api/api.php';
+  server = 'http://localhost/ap/api.php';
 
 
   constructor(private http: HttpClient) { }

@@ -1,3 +1,4 @@
+import { PagosComponent } from './../../Pages/pagos/pagos.component';
 import { Routes } from '@angular/router';
 
 
@@ -9,6 +10,13 @@ import { EmpleadosComponent } from '../../Pages/empleados/empleados.component';
 import { NuevoEmpleadoComponent } from '../../Pages/empleados/nuevo-empleado/nuevo-empleado.component';
 import { EditarEmpleadoComponent } from '../../Pages/empleados/editar-empleado/editar-empleado.component';
 
+//importar 
+
+import { NuevoPagoComponent } from '../../Pages/pagos/nuevo-pago/nuevo-pago.component';
+
+
+
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: '',    component: DashboardComponent },
@@ -19,5 +27,12 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'clientes',    component: ClientesComponent },
     { path: 'nuevo-cliente',    component: NuevoClienteComponent },
     { path: 'editar-cliente/:id',    component: EditarClienteComponent },
+
+    // ventanas 
+    { path: 'pagos',    component: PagosComponent },
+
+    { path: 'nuevo-pago',    component: NuevoPagoComponent },
+
+
   
 ];

@@ -19,6 +19,8 @@ import { EditarClienteComponent } from './Pages/clientes/editar-cliente/editar-c
 import { EmpleadosComponent } from './Pages/empleados/empleados.component';
 import { NuevoEmpleadoComponent } from './Pages/empleados/nuevo-empleado/nuevo-empleado.component';
 import { EditarEmpleadoComponent } from './Pages/empleados/editar-empleado/editar-empleado.component';
+import { PagosComponent } from './Pages/pagos/pagos.component';
+import { NuevoPagoComponent } from './Pages/pagos/nuevo-pago/nuevo-pago.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { EditarEmpleadoComponent } from './Pages/empleados/editar-empleado/edita
     EmpleadosComponent,
     NuevoEmpleadoComponent,
     EditarEmpleadoComponent,
+    PagosComponent,
+    NuevoPagoComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
