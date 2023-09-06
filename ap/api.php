@@ -348,6 +348,72 @@ if ($post['accion']=='addPago'){
 
 
 
+///////////////////-------------------CARGAR DATOS DEL PAGO---------------///////////////////
+if ($post['accion'] == 'cargarDatosPago') {
+    $idPago = $post['idPago'];
+    $sentencia = "SELECT * FROM pago WHERE id_transaccion = '$idPago'";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $datosPago = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($datosPago, array(
+            'id' => $row['id_transaccion'],
+            'forma_pago'  => $row['forma_pago'],
+            'codigo_cliente'  => $row['codigo_cliente'],
+            'fecha_pago'  => $row['fecha_pago'],
+            'total'  => $row['total'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'datosPago'=>$datosPago));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+
+
+/////////////////-----------ELIMINAR PAGO--------------///////////
+if ($post['accion']=='deletePago')
+{
+$sentencia =sprintf(
+    "DELETE FROM pago WHERE id_transaccion='%s'",$post['idPago']);
+$result=mysqli_query($mysql,$sentencia);
+if($result)
+{
+    $envio=json_encode(array('estado'=>true));
+}
+else
+{
+    $envio=json_encode(array('estado'=>false));
+}
+echo $envio;
+}
+
+
+// nueva tabla pedidos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
