@@ -30,6 +30,9 @@ import { ProductosComponent } from './Pages/productos/productos.component';
 import { NuevoProductoComponent } from './Pages/productos/nuevo-producto/nuevo-producto.component';
 import { EditarProductoComponent } from './Pages/productos/editar-producto/editar-producto.component';
 import { EditarPedidoComponent } from './Pages/pedidos/editar-pedido/editar-pedido.component';
+import { OficinasComponent } from './Pages/oficinas/oficinas.component';
+import { NuevaOficinaComponent } from './Pages/oficinas/nueva-oficina/nueva-oficina.component';
+import { EditarOficinaComponent } from './Pages/oficinas/editar-oficina/editar-oficina.component';
 
 
 @NgModule({
@@ -64,6 +67,9 @@ import { EditarPedidoComponent } from './Pages/pedidos/editar-pedido/editar-pedi
     NuevoProductoComponent,
     EditarProductoComponent,
     EditarPedidoComponent,
+    OficinasComponent,
+    NuevaOficinaComponent,
+    EditarOficinaComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

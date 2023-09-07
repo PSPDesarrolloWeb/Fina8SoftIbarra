@@ -27,6 +27,9 @@ import { ProductosComponent } from '../../Pages/productos/productos.component';
 import { NuevoProductoComponent } from '../../Pages/productos/nuevo-producto/nuevo-producto.component';
 import { EditarProductoComponent } from '../../Pages/productos/editar-producto/editar-producto.component';
 import { EditarPedidoComponent } from '../../Pages/pedidos/editar-pedido/editar-pedido.component';
+import { OficinasComponent } from '../../Pages/oficinas/oficinas.component';
+import { NuevaOficinaComponent } from '../../Pages/oficinas/nueva-oficina/nueva-oficina.component';
+import { EditarOficinaComponent } from '../../Pages/oficinas/editar-oficina/editar-oficina.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -35,6 +38,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'empleados',    component: EmpleadosComponent },
     { path: 'nuevo-empleado',    component: NuevoEmpleadoComponent },
     { path: 'editar-empleado/:id',    component: EditarEmpleadoComponent },
+
+    { path: 'oficinas',    component: OficinasComponent },
+    { path: 'nueva-oficina',    component: NuevaOficinaComponent },
+    { path: 'editar-oficina/:codigo',    component: EditarOficinaComponent },
+
     { path: 'clientes',    component: ClientesComponent },
     { path: 'nuevo-cliente',    component: NuevoClienteComponent },
     { path: 'editar-cliente/:id',    component: EditarClienteComponent },

@@ -293,7 +293,91 @@ if ($post['accion'] == 'listarOficinas') {
     }
     echo $envio;
 }
+///////////////////////------------AÑADIR OFICINA---------/////////////////////
+if ($post['accion']=='addOficina'){
+    $sentencia = sprintf(
+        "INSERT INTO oficina (
+        codigo_oficina, ciudad, pais,
+        region, codigo_postal, telefono, linea_direccion1,
+        linea_direccion2
+        ) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+        $post['codigo'],$post['ciudad'],$post['pais'],$post['region'],$post['cpostal'],
+        $post['telefono'],$post['dir1'],$post['dir2']);
+    
 
+$result=mysqli_query($mysql,$sentencia);
+if($result)
+{
+    $envio=json_encode(array('estado'=>true));
+}
+else
+{
+    $envio=json_encode(array('estado'=>false));
+}
+echo $envio;
+}
+
+
+///////////////////-------------------CARGAR DATOS OFICINA---------------///////////////////
+if ($post['accion'] == 'cargarDatosOficina') {
+    $idOficina = $post['idOficina'];
+    $sentencia = "SELECT * FROM oficina WHERE codigo_oficina = '$idOficina'";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $datosOficina = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($datosOficina, array(
+            'codigo' => $row['codigo_oficina'],
+            'ciudad' => $row['ciudad'],
+            'pais' => $row['pais'],
+            'region' => $row['region'],
+            'cpostal' => $row['codigo_postal'],
+            'telefono' => $row['telefono'],
+            'dir1' => $row['linea_direccion1'],
+            'dir2' => $row['linea_direccion2'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'datosOficina'=>$datosOficina));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+/////////////////-----------ACTUALIZAR OICINA--------------///////////
+if ($post['accion'] == 'updateOficina') {
+    $sentencia = sprintf(
+        "UPDATE oficina SET 
+        codigo_oficina='%s', ciudad='%s', pais='%s',
+        region='%s', codigo_postal='%s', telefono='%s', linea_direccion1='%s',
+        linea_direccion2='%s'
+        WHERE codigo_oficina='%s'",
+        $post['codigo'],$post['ciudad'],$post['pais'],$post['region'],$post['cpostal'],
+        $post['telefono'],$post['dir1'],$post['dir2'],$post['idOficina'] );
+    $result = mysqli_query($mysql, $sentencia);
+    if ($result) {
+        $envio = json_encode(array('estado' => true));
+    } else {
+        $envio = json_encode(array('estado' => false));
+    }
+    echo $envio;
+}
+/////////////////-----------ELIMINAR OFICINA--------------///////////
+if ($post['accion']=='deleteOficina')
+{
+$sentencia =sprintf(
+    "DELETE FROM oficina WHERE codigo_oficina='%s'",$post['idOficina']);
+$result=mysqli_query($mysql,$sentencia);
+if($result)
+{
+    $envio=json_encode(array('estado'=>true));
+}
+else
+{
+    $envio=json_encode(array('estado'=>false));
+}
+echo $envio;
+}
 
 
 //////////////////////////////////////////////CRUD DE PAGOS ////////////////////////////////////////////////////

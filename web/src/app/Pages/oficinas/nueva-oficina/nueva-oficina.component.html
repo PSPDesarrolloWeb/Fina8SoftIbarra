@@ -1,0 +1,93 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="title">Añade una nueva Oficina</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Codigo</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un codigo"
+                                        id="idoficina" name="idoficina" [(ngModel)]="idOficina">
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una Fecha"
+                                        id="ciudad" name="ciudad" [(ngModel)]="ciudad">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Pais</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un Pais"
+                                        id="pais" name="pais" [(ngModel)]="pais">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una region"
+                                        id="region" name="region" [(ngModel)]="region">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Codigo Postal</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese codigo postal"
+                                        id="cpostal" name="cpostal" [(ngModel)]="cpostal">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>telefono</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese telefono"
+                                        id="telefono" name="telefonon" [(ngModel)]="telefono">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>direccion 1</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese direccion1"
+                                        id="dir1" name="dir1" [(ngModel)]="dir1">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>direccion 2</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese direccion2"
+                                        id="dir2" name="dir2" [(ngModel)]="dir2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                
+                                    <button class="btn btn-danger full-width-btn" (click)="addOficina()">Añadir Oficina</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

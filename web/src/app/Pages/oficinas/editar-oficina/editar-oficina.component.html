@@ -1,0 +1,84 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" *ngFor="let datos of datosOficina">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="title">Actualizar datos de Oficina</h5>
+                        </div>
+                        
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>ciudad</label>
+                                <input type="text" class="form-control" placeholder="0.00" id="ciudad"
+                                    name="limitecred" [(ngModel)]="datos.ciudad">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Pais</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un pais" id="pais"
+                                        name="pais" [(ngModel)]="datos.pais">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>region</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una region"
+                                        id="region" name="region" [(ngModel)]="datos.region">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>cpostal</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un cpostal"
+                                        id="cpostal" name="cpostal" [(ngModel)]="datos.cpostal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un # telefónico"
+                                        id="telefono" name="telefono" [(ngModel)]="datos.telefono">
+                                </div>
+                            </div>
+            
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dirección 1</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una dirección"
+                                        id="dir1" name="dir1" [(ngModel)]="datos.dir1">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dirección 2</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una dirección"
+                                        id="dir2" name="dir2" [(ngModel)]="datos.dir2">
+                                </div>
+                            </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-danger full-width-btn" (click)="updateOficina(datos)">Actualizar Datos</button>
+                                </div>
+                            </div>
+                        </div>
+                
+                </div>
+        
+        
+

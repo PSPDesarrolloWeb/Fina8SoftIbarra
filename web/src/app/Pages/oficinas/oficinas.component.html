@@ -1,0 +1,52 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Lista de Oficinas</h4>
+          <button type="button" class="btn btn-danger" [routerLink]="'/nueva-oficina'">Nueva Oficina</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive" style="overflow-x: auto;">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>#</th>
+                <th>Codigo_Ofcina</th>
+                <th>Ciudad</th>
+                <th>Pais</th>
+                <th>Region</th>
+                <th>Codigo Postal</th>
+                <th>Telefon</th>
+                <th>Linea direccion 1</th>
+                <th>Linea direccion 2</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let datos of oficinas; let i = index">
+                  <td>{{i + 1 }}</td>
+                  <td>{{ datos.codigo }}</td>  
+                  <td>{{ datos.ciudad }}</td>
+                  <td>{{ datos.pais }}</td>
+                  <td>{{ datos.region }}</td>
+                  <td>{{ datos.cpostal }}</td>
+                  <td>{{ datos.telefono }}</td>
+                  <td>{{ datos.dir1 }}</td>
+                  <td>{{ datos.dir2 }}</td>
+
+                  <td>
+                    <button type="button" class="btn btn-success" [routerLink]="'/editar-oficina/' + datos.codigo">✏️</button>
+                    <button type="button" class="btn btn-default"(click)="deleteOficina(datos.codigo)">🗑️</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <button class="btn btn-primary floating-btn" (click)="scrollToTop()">
+    <i class="bi bi-chevron-up"></i>
+</button> -->
+</div>
