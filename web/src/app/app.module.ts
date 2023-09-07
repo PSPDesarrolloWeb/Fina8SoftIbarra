@@ -26,6 +26,10 @@ import { PedidosComponent } from './Pages/pedidos/pedidos.component';
 import { NuevoPedidoComponent } from './Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
 import { DetallesComponent } from './Pages/detalles/detalles.component';
 import { NuevoDetalleComponent } from './Pages/detalles/nuevo-detalle/nuevo-detalle.component';
+import { ProductosComponent } from './Pages/productos/productos.component';
+import { NuevoProductoComponent } from './Pages/productos/nuevo-producto/nuevo-producto.component';
+import { EditarProductoComponent } from './Pages/productos/editar-producto/editar-producto.component';
+import { EditarPedidoComponent } from './Pages/pedidos/editar-pedido/editar-pedido.component';
 
 
 @NgModule({
@@ -56,6 +60,10 @@ import { NuevoDetalleComponent } from './Pages/detalles/nuevo-detalle/nuevo-deta
     NuevoPedidoComponent,
     DetallesComponent,
     NuevoDetalleComponent,
+    ProductosComponent,
+    NuevoProductoComponent,
+    EditarProductoComponent,
+    EditarPedidoComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

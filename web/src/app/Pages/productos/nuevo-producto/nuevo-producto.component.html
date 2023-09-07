@@ -1,0 +1,96 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Añade un nuevo producto</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Código</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un código" id="codprod"
+                                        name="codprod" [(ngModel)]="codprod">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="date" class="form-control" placeholder="Ingrese un nombre" id="nombre"
+                                        name="nombre" [(ngModel)]="nombre">
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Gama</label>
+                                    <select class="form-control" [(ngModel)]="idGama" (change)="onChangeGama($event)">
+                                        <option value="">Seleccione una opción</option>
+                                        <option *ngFor="let datos of gamas" [value]="datos.gama">
+                                            {{ datos.gama }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 px-1">
+                                <div class="form-group">
+                                    <label>Dimensiones</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un valor" id="dim"
+                                        name="dim" [(ngModel)]="dim">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Proveedor</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese un proveedor" id="prov"
+                                        name="prov" [(ngModel)]="prov">
+                                </div>
+                            </div>
+                            <div class="col-md-8 px-1">
+                                <div class="form-group">
+                                    <label>Descripción</label>
+                                    <input type="text" class="form-control" placeholder="Ingrese una descripcion"
+                                        id="desc" name="desc" [(ngModel)]="desc">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Stock</label>
+                                    <input type="text" class="form-control" placeholder="0"
+                                        id="stock" name="stock" [(ngModel)]="stock">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Precio de venta</label>
+                                    <input type="text" class="form-control" placeholder="0.00"
+                                        id="pv" name="pv" [(ngModel)]="pv">
+                                </div>
+                            </div>
+                            <div class="col-md-4 px-1">
+                                <div class="form-group">
+                                    <label>Precio del venta al Proveedor</label>
+                                    <input type="text" class="form-control" placeholder="0.00"
+                                        id="pvp" name="pvp" [(ngModel)]="pvp">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-danger full-width-btn" (click)="addProducto()">Añadir
+                                        Pedido</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

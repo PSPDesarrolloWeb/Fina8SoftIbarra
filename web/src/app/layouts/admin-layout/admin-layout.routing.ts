@@ -23,6 +23,10 @@ import { DetallesComponent } from '../../Pages/detalles/detalles.component';
 import { NuevoPedidoComponent } from '../../Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
 
 import { NuevoDetalleComponent } from '../../Pages/detalles/nuevo-detalle/nuevo-detalle.component';
+import { ProductosComponent } from '../../Pages/productos/productos.component';
+import { NuevoProductoComponent } from '../../Pages/productos/nuevo-producto/nuevo-producto.component';
+import { EditarProductoComponent } from '../../Pages/productos/editar-producto/editar-producto.component';
+import { EditarPedidoComponent } from '../../Pages/pedidos/editar-pedido/editar-pedido.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -35,18 +39,24 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'nuevo-cliente',    component: NuevoClienteComponent },
     { path: 'editar-cliente/:id',    component: EditarClienteComponent },
 
-    { path: 'editar-pago/:id',    component: EditarPagoComponent },
+    { path: 'productos',    component: ProductosComponent },
+    { path: 'nuevo-producto',    component: NuevoProductoComponent },
+    { path: 'editar-producto/:codigo',    component: EditarProductoComponent },
+    
+    { path: 'editar-pago/:codigo',    component: EditarPagoComponent },
 
     // ventanas 
     { path: 'pagos',    component: PagosComponent },
 
     { path: 'pedidos',    component: PedidosComponent },
+    { path: 'nuevo-pedido',    component: NuevoPedidoComponent },
+    { path: 'editar-pedido/:codigo',    component: EditarPedidoComponent },
+
 
     { path: 'detalles',    component: DetallesComponent },
 
     { path: 'nuevo-pago',    component: NuevoPagoComponent },
 
-    { path: 'nuevo-pedido',    component: NuevoPedidoComponent },
 
     { path: 'nuevo-detalle',    component: NuevoDetalleComponent },
 

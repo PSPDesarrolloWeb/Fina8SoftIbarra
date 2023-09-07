@@ -12,26 +12,23 @@
           <div class="table-responsive" style="overflow-x: auto;">
             <table class="table">
               <thead class=" text-primary">
-                <th>#</th>
-                <th>codigo_pedido</th>
-                <th>codigo_producto</th>
-                <th>cantidad</th>
-                <th>precio_unidad</th>
-                <th>numero_linea</th>
-                <th>OP</th>
+                <th>Código pedido</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>N° Linea</th>
+                <!-- <th>OP</th> -->
               </thead>
               <tbody>
-                <tr *ngFor="let datos of detalles; let i = index">
-                  <td>{{i + 1 }}</td>
+                <tr *ngFor="let datos of detalles">
                   <td>{{ datos.codigo_pedido }}</td>
                   <td>{{ datos.codigo_producto }}</td>
                   <td>{{ datos.cantidad }}</td>
                   <td>{{ datos.precio_unidad }}</td>
                   <td>{{ datos.numero_linea }}</td>
-                  <td>
-                    <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
-                    <button type="button" class="btn btn-default"(click)="deletePago(datos.id)">🗑️</button>
-                  </td>
+                  <!-- <td>
+                    <button type="button" class="btn btn-default"(click)="deleteDetalle(datos.codigo_pedido)">🗑️</button>
+                  </td> -->
                 </tr>
               </tbody>
             </table>

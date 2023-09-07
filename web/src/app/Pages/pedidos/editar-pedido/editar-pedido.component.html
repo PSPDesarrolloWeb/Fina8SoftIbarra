@@ -1,0 +1,84 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" *ngFor="let datos of datosPedido">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="title">Añade un nuevo Pedido</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+
+                        <div class="row">
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Fecha Pedido</label>
+                                <input type="date" class="form-control" placeholder="Ingrese una Fecha" id="fecha_pedido"
+                                    name="fecha_pedido" [(ngModel)]="datos.fecha_pedido">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Fecha Esperada</label>
+                                <input type="date" class="form-control" placeholder="Ingrese una Fecha" id="fecha_esperada"
+                                    name="fecha_esperada" [(ngModel)]="datos.fecha_esperada">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Fecha Entrega</label>
+                                <input type="date" class="form-control" placeholder="Ingrese una Fecha" id="fecha_entrega"
+                                    name="fecha_entrega" [(ngModel)]="datos.fecha_entrega">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" class="form-control" placeholder="Ingrese un Estado" id="estado"
+                                    name="estado" [(ngModel)]="datos.estado">
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Comentarios</label>
+                                <input type="text" class="form-control" placeholder="Ingrese un Comentarios" id="comentarios"
+                                    name="comentarios" [(ngModel)]="datos.comentarios">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Codigo Cliente</label>
+                                <select class="form-control" [(ngModel)]="idCliente"
+                                    (change)="onChangeCliente($event.target.value)">
+                
+                                    <option *ngFor="let cliente of clientes" [value]="cliente.id" [selected]="cliente.id === datos.codigo_cliente">
+                                        {{ cliente.nombre1 }} {{ cliente.apellido }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <button class="btn btn-danger full-width-btn" 
+                                 (click)="updatePedido(datos)" >Actualizar Pagos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

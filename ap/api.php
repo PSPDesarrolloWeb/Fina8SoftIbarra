@@ -301,7 +301,10 @@ if ($post['accion'] == 'listarOficinas') {
 
 
 if ($post['accion'] == 'listarPagos') {
-    $sentencia = "SELECT * FROM pago ORDER BY id_transaccion ASC;";
+    $sentencia = "SELECT p.*, c.nombre_cliente 
+    FROM pago p
+    INNER JOIN cliente c ON p.codigo_cliente = c.codigo_cliente
+    ORDER BY p.fecha_pago DESC;";
     $result = mysqli_query($mysql, $sentencia);
     $f = mysqli_num_rows($result);
     $pagos = array();
@@ -309,7 +312,7 @@ if ($post['accion'] == 'listarPagos') {
         array_push($pagos, array(
             'codigo' => $row['id_transaccion'],
             'forma_pago' => $row['forma_pago'],
-            'codigo_cliente' => $row['codigo_cliente'],
+            'cliente' => $row['nombre_cliente'],
             'fecha_pago' => $row['fecha_pago'],
             'total' => $row['total'],           
         ));
@@ -368,6 +371,23 @@ if ($post['accion'] == 'cargarDatosPago') {
         $envio = json_encode(array('estado'=>true, 'datosPago'=>$datosPago));
     } else {
         $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+/* ----------------EDITAR PAGOS-------------------- */
+if ($post['accion'] == 'updatePago') {
+    $sentencia = sprintf(
+        "UPDATE pago SET 
+        forma_pago= '%s', codigo_cliente='%s', fecha_pago='%s',
+        total='%s' WHERE id_transaccion='%s'",
+        $post['forma_pago'],$post['codigo_cliente'],$post['fecha_pago'],$post['total'],$post['idPago']
+    );
+    $result = mysqli_query($mysql, $sentencia);
+    if ($result) {
+        $envio = json_encode(array('estado' => true));
+    } else {
+        $envio = json_encode(array('estado' => false));
     }
     echo $envio;
 }
@@ -452,7 +472,80 @@ if ($post['accion']=='addPedido'){
         }
 
 
-// nueva tabla detalle_pedidos
+        //Cargar pedidos
+if ($post['accion'] == 'cargarDatosPedido') {
+    $idPedido = $post['idPedido'];
+    $sentencia = "SELECT * FROM pedido WHERE codigo_pedido = '$idPedido'";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $datosPedido = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($datosPedido, array(
+            'id' => $row['codigo_pedido'],
+            'fecha_pedido'  => $row['fecha_pedido'],
+            'fecha_esperada'  => $row['fecha_esperada'],
+            'fecha_entrega'  => $row['fecha_entrega'],
+            'estado'  => $row['estado'],
+            'comentarios'  => $row['comentarios'],
+            'codigo_cliente'  => $row['codigo_cliente'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'datosPedido'=>$datosPedido));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+/* ----------------EDITAR PEDIDOS-------------------- */
+if ($post['accion'] == 'updatePedido') {
+    $sentencia = sprintf(
+        "UPDATE pedido SET 
+        fecha_pedido= '%s', fecha_esperada='%s', fecha_entrega='%s', estado='%s',
+        comentarios='%s', codigo_cliente='%s' WHERE codigo_pedido='%s'",
+        $post['fecha_pedido'],$post['fecha_esperada'],$post['fecha_entrega'],$post['estado'],$post['comentarios'],$post['codigo_cliente'] ,$post['idPedido']
+    );
+    $result = mysqli_query($mysql, $sentencia);
+    if ($result) {
+        $envio = json_encode(array('estado' => true));
+    } else {
+        $envio = json_encode(array('estado' => false));
+    }
+    echo $envio;
+}
+
+//////////////////////////////////ELIMINAR PEDIDOS//////////////////////////////////////
+if ($post['accion'] == 'deletePedido') {
+    $idPedido = $post['idPedido'];
+            mysqli_begin_transaction($mysql);
+            $sentenciaDetalle = sprintf(
+        "DELETE FROM detalle_pedido WHERE codigo_pedido='%s'",
+        $idPedido
+    );
+    $resultDetalle = mysqli_query($mysql, $sentenciaDetalle);
+
+    if ($resultDetalle) {
+        $sentenciaPedido = sprintf(
+            "DELETE FROM pedido WHERE codigo_pedido='%s'",
+            $idPedido
+        );
+        $resultPedido = mysqli_query($mysql, $sentenciaPedido);
+
+        if ($resultPedido) {
+            mysqli_commit($mysql);
+            $envio = json_encode(array('estado' => true));
+        } else {
+            mysqli_rollback($mysql);
+            $envio = json_encode(array('estado' => false));
+        }
+    } else {
+        mysqli_rollback($mysql);
+        $envio = json_encode(array('estado' => false));
+    }
+
+    echo $envio;
+}
 
 
 //////////////////////////////////////////////CRUD DE DETALLE_PEDIDOS ////////////////////////////////////////////////////
@@ -506,7 +599,6 @@ if ($post['accion']=='addDetalle'){
         }
 
 
-
 //listar de prodcutos y pedidos 
 
 if ($post['accion'] == 'listarProductos') {
@@ -519,16 +611,128 @@ if ($post['accion'] == 'listarProductos') {
             'codigo' => $row['codigo_producto'],
             'nombre' => $row['nombre'],
             'gama' => $row['gama'],
-            'dimensiones' => $row['dimensiones'],
-            'proveedor' => $row['proveedor'],
-            'descripcion' => $row['descripcion'],
+            'dim' => $row['dimensiones'],
+            'prov' => $row['proveedor'],
+            'desc' => $row['descripcion'],
             'stock' => $row['cantidad_en_stock'],
-            'precio_venta' => $row['precio_venta'],
-            'precio_proveedor' => $row['precio_proveedor'],
+            'pv' => $row['precio_venta'],
+            'pvp' => $row['precio_proveedor'],
         ));
     }
     if ($f > 0) {
         $envio = json_encode(array('estado'=>true, 'productos'=>$productos));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+//////////////////////------------AÑADIR PRODUCTO---------/////////////////////
+if ($post['accion']=='addProducto'){
+    $sentencia = sprintf(
+        "INSERT INTO producto (
+        codigo_producto, nombre, gama, dimensiones, proveedor, descripcion, cantidad_en_stock,
+        precio_venta, precio_proveedor
+        ) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+        $post['codprod'],$post['nombre'],$post['gama'],
+        $post['dim'],$post['prov'],$post['desc'],$post['stock'],
+        $post['pv'],$post['pvp']);
+    
+
+        $result=mysqli_query($mysql,$sentencia);
+        if($result)
+        {
+            $envio=json_encode(array('estado'=>true));
+        }
+        else
+        {
+            $envio=json_encode(array('estado'=>false));
+        }
+        echo $envio;
+        }
+
+        ///////////////////-------------------CARGAR DATOS DEL PRODUCTO---------------///////////////////
+if ($post['accion'] == 'cargarDatosProducto') {
+    $idProducto = $post['idProducto'];
+    $sentencia = "SELECT * FROM producto WHERE codigo_producto = '$idProducto'";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $datosProducto = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($datosProducto, array(
+            'codigo' => $row['codigo_producto'],
+            'nombre' => $row['nombre'],
+            'gama' => $row['gama'],
+            'dim' => $row['dimensiones'],
+            'prov' => $row['proveedor'],
+            'desc' => $row['descripcion'],
+            'stock' => $row['cantidad_en_stock'],
+            'pv' => $row['precio_venta'],
+            'pvp' => $row['precio_proveedor'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'datosProducto'=>$datosProducto));
+    } else {
+        $envio = json_encode(array('estado'=>false));
+    }
+    echo $envio;
+}
+
+/////////////////-----------ACTUALIZAR PRODUCTO--------------///////////
+if ($post['accion'] == 'updateProducto') {
+    $sentencia = sprintf(
+        "UPDATE producto SET 
+        codigo_producto='%s', nombre='%s', gama='%s', dimensiones='%s', proveedor='%s', descripcion='%s',
+        cantidad_en_stock='%s', precio_venta='%s', precio_proveedor='%s'
+        WHERE codigo_producto='%s'",
+        $post['codprod'],$post['nombre'],$post['gama'],$post['dim'],$post['prov'],
+        $post['desc'],$post['stock'],$post['pv'],$post['pvp'],$post['idProducto']
+    );
+    $result = mysqli_query($mysql, $sentencia);
+    if ($result) {
+        $envio = json_encode(array('estado' => true));
+    } else {
+        $envio = json_encode(array('estado' => false));
+    }
+    echo $envio;
+}
+
+
+/////////////////-----------ELIMINAR PRODUCTO--------------///////////
+if ($post['accion']=='deleteProducto')
+{
+$sentencia =sprintf(
+    "DELETE FROM producto WHERE codigo_producto='%s'",$post['idProducto']);
+$result=mysqli_query($mysql,$sentencia);
+if($result)
+{
+    $envio=json_encode(array('estado'=>true));
+}
+else
+{
+    $envio=json_encode(array('estado'=>false));
+}
+echo $envio;
+}
+
+//////////////////////////////////CRUD GAMA///////////////////////////////////////
+////////////////////-------------LISTAR GAMAS------------------------////////////////////
+if ($post['accion'] == 'listarGamas') {
+    $sentencia = "SELECT * FROM gama_producto ORDER BY gama ASC;";
+    $result = mysqli_query($mysql, $sentencia);
+    $f = mysqli_num_rows($result);
+    $gamas = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        array_push($gamas, array(
+            'gama' => $row['gama'],
+            'desc' => $row['descripcion_texto'],
+            'descht' => $row['descripcion_html'],
+            'img' => $row['imagen'],
+        ));
+    }
+    if ($f > 0) {
+        $envio = json_encode(array('estado'=>true, 'gamas'=>$gamas));
     } else {
         $envio = json_encode(array('estado'=>false));
     }

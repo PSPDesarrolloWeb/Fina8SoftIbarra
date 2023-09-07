@@ -3,14 +3,13 @@ import { ApiService } from '../../Services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-pedidos',
-  templateUrl: './pedidos.component.html',
-  styleUrls: ['./pedidos.component.scss']
+  selector: 'app-productos',
+  templateUrl: './productos.component.html',
+  styleUrls: ['./productos.component.scss']
 })
-export class PedidosComponent implements OnInit {
-  pedidos: any = [];
+export class ProductosComponent implements OnInit {
+  productos: any = [];
 
   constructor(
     private servicio: ApiService,
@@ -20,20 +19,20 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.listarPedidos();
+    this.listarProductos();
 
   }
 
 
   
-  listarPedidos() {
-    let pedidos = {
-        accion: 'listarPedidos',
+  listarProductos() {
+    let productos = {
+        accion: 'listarProductos',
     };
-    this.servicio.postData(pedidos).subscribe(
+    this.servicio.postData(productos).subscribe(
         async (res: any) => {
             if (res.estado == true) {
-                this.pedidos = res.pedidos;
+                this.productos = res.productos;
             } else {
             }
         },
@@ -43,10 +42,10 @@ export class PedidosComponent implements OnInit {
     );
 }
 
-deletePedido(id: number) {
+deleteProducto(id: number) {
   swal.fire({
       title: 'Eliminar',
-      text: "¿Estás seguro de eliminar este pedido?",
+      text: "¿Estás seguro de eliminar este producto?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
@@ -55,23 +54,23 @@ deletePedido(id: number) {
   }).then((result) => {
       if (result.isConfirmed) {
           let datos = {
-              accion: 'deletePedido',
-              idPedido: id,
+              accion: 'deleteProducto',
+              idProducto: id,
           };
 
           this.servicio.postData(datos).subscribe(
               async (res: any) => {
                   if (res.estado == true) {
-                      this.toastr.success('<span class="now-ui-icons ui-1_bell-53"></span>Pedido eliminado correctamente', '', {
+                      this.toastr.success('<span class="now-ui-icons ui-1_bell-53"></span>Producto eliminado correctamente', '', {
                           timeOut: 8000,
                           closeButton: true,
                           enableHtml: true,
                           toastClass: 'alert alert-success alert-with-icon',
                           positionClass: 'toast-top-right'
                       });
-                      this.listarPedidos();
+                      this.listarProductos();
                   } else {
-                      console.log('Error al eliminar el cliente');
+                      console.log('Error al eliminar el producto');
                   }
               },
               (error) => {

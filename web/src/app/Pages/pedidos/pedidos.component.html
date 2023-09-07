@@ -31,8 +31,8 @@
                   <td>{{ datos.comentarios }}</td>
                   <td>{{ datos.nombre_cliente }}</td>
                   <td>
-                    <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
-                    <button type="button" class="btn btn-default"(click)="deletePago(datos.id)">🗑️</button>
+                    <button type="button" class="btn btn-success" [routerLink]="'/editar-pedido/' + datos.codigo">✏️</button>
+                    <button type="button" class="btn btn-default"(click)="deletePedido(datos.codigo)">🗑️</button>
                   </td>
                 </tr>
               </tbody>

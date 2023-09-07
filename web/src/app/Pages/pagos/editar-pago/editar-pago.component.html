@@ -18,7 +18,7 @@
                             <div class="form-group">
                                 <label>Forma Pago</label>
                                 <input type="text" class="form-control" placeholder="Ingrese un Forma de pago" id="forma_pago"
-                                    name="forma_pago" [(ngModel)]="forma_pago">
+                                    name="forma_pago" [(ngModel)]="datos.forma_pago">
                             </div>
                         </div>
 
@@ -33,18 +33,18 @@
                                 </select>
                             </div>
                         </div>
-                            <div class="col-md-4 px-1">
+                            <div class="col-md-3 px-1">
                                 <div class="form-group">
                                     <label>Fecha Pago</label>
                                     <input type="date" class="form-control" placeholder="Ingrese un fecha_pago"
-                                        id="fecha_pago" name="fecha_pago" [(ngModel)]="fecha_pago">
+                                        id="fecha_pago" name="fecha_pago" [(ngModel)]="datos.fecha_pago">
                                 </div>
                             </div>
-                            <div class="col-md-4 px-1">
+                            <div class="col-md-3 px-1">
                                 <div class="form-group">
                                     <label>Total</label>
                                     <input type="text" class="form-control" placeholder="Ingrese un total"
-                                        id="total" name="total" [(ngModel)]="total">
+                                        id="total" name="total" [(ngModel)]="datos.total">
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <button class="btn btn-danger full-width-btn" 
-                                    (click)="updatePago(datos)"  >Añadir Pagos</button>
+                                    (click)="updatePago(datos)"  >Actualizar datos</button>
                                 </div>
                             </div>
                         </div>

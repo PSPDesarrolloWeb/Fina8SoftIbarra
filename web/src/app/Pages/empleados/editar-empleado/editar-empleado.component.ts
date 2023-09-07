@@ -44,11 +44,11 @@ export class EditarEmpleadoComponent implements OnInit {
   onChangeJefe(jefeId: any) {
     this.idJefe = jefeId;
 
-}
+  }
 
-onChangeOficina(oficinaId: any) {
+  onChangeOficina(oficinaId: any) {
     this.idOficina = oficinaId;
-}
+  }
 
   listarEmpleados() {
     let empleados = {
@@ -67,23 +67,23 @@ onChangeOficina(oficinaId: any) {
     );
   }
 
-  
+
   listarOficinas() {
     let oficinas = {
-        accion: 'listarOficinas',
+      accion: 'listarOficinas',
     };
     this.servicio.postData(oficinas).subscribe(
-        async (res: any) => {
-            if (res.estado == true) {
-                this.oficinas = res.oficinas;
-            } else {
-            }
-        },
-        (error) => {
-            console.log('Error en la conexión');
+      async (res: any) => {
+        if (res.estado == true) {
+          this.oficinas = res.oficinas;
+        } else {
         }
+      },
+      (error) => {
+        console.log('Error en la conexión');
+      }
     );
-}
+  }
 
   cargarDatosEmpleado() {
     let datosEmpleado = {
@@ -95,7 +95,6 @@ onChangeOficina(oficinaId: any) {
         if (res.estado == true) {
           this.datosEmpleado = res.datosEmpleado;
           this.idJefe = this.datosEmpleado[0].jefe;
-          this.idOficina = this.datosEmpleado[0].oficina;
         } else {
           console.log('Error al consultar datos del producto');
         }
@@ -121,8 +120,6 @@ onChangeOficina(oficinaId: any) {
       idJefe: this.idJefe,
       puesto: datos.puesto,
     };
-
-
 
     this.servicio.postData(data).subscribe((res: any) => {
       if (res.estado === true) {

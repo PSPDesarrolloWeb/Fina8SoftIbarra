@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ApiService } from '../../../Services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-editar-pago',
-  templateUrl: './editar-pago.component.html',
-  styleUrls: ['./editar-pago.component.scss']
+  selector: 'app-editar-pedido',
+  templateUrl: './editar-pedido.component.html',
+  styleUrls: ['./editar-pedido.component.scss']
 })
-export class EditarPagoComponent implements OnInit {
+export class EditarPedidoComponent implements OnInit {
 
 
   clientes: any = [];
-  datosPago: any = [];
-  idPago: string = '';
+  datosPedido: any = [];
+  idPedido: string = '';
 
 
-  forma_pago: string = '';
+
+  fecha_pedido: string = '';
   idCliente: string='';
-  fecha_pago: string = '';
-  total: string = '';
+  fecha_esperada: string = '';
+  fecha_entrega: string = '';
+  estado: string = '';
+  comentarios: string = '';
   idFromUrl: string = '';
-
 
   constructor(
     private servicio: ApiService,
@@ -41,25 +42,25 @@ export class EditarPagoComponent implements OnInit {
     this.listarClientes();
     this.route.params.subscribe(params => {
       this.idFromUrl = params['codigo'];
-      this.cargarDatosPago();
+      this.cargarDatosPedido();
     });
   }
 
 
 
 
-  cargarDatosPago() {
-    let datosPago = {
-      accion: 'cargarDatosPago',
-      idPago: this.idFromUrl,
+  cargarDatosPedido() {
+    let datosPedido = {
+      accion: 'cargarDatosPedido',
+      idPedido: this.idFromUrl,
     };
-    this.servicio.postData(datosPago).subscribe(
+    this.servicio.postData(datosPedido).subscribe(
       async (res: any) => {
         if (res.estado == true) {
-          this.datosPago = res.datosPago;
-          this.idCliente = this.datosPago[0].codigo_cliente;
+          this.datosPedido = res.datosPedido;
+          this.idCliente = this.datosPedido[0].codigo_cliente;
         } else {
-          console.log('Error al consultar datos del pago');
+          console.log('Error al consultar datos del pedido');
         }
       },
       (error) => {
@@ -69,10 +70,10 @@ export class EditarPagoComponent implements OnInit {
   }
 
 listarClientes() {
-  let pagos = {
+  let pedidos = {
       accion: 'listarClientes',
   };
-  this.servicio.postData(pagos).subscribe(
+  this.servicio.postData(pedidos).subscribe(
       async (res: any) => {
           if (res.estado == true) {
               this.clientes = res.clientes;
@@ -88,15 +89,17 @@ listarClientes() {
 
 
   //tomar en cuenta 
-  updatePago(datos: any) {
+  updatePedido(datos: any) {
 
     let data = {
-      accion: 'updatePago',
-      idPago: this.idFromUrl,
-      forma_pago: datos.forma_pago,
+      accion: 'updatePedido',
+      idPedido: this.idFromUrl,
+      fecha_pedido: datos.fecha_pedido,
       codigo_cliente: this.idCliente,
-      fecha_pago: datos.fecha_pago,
-      total: datos.total,
+      fecha_esperada: datos.fecha_esperada,
+      fecha_entrega: datos.fecha_entrega,
+      estado: datos.estado,
+      comentarios: datos.comentarios,
 
     };
 
@@ -111,7 +114,7 @@ listarClientes() {
           toastClass: 'alert alert-success alert-with-icon',
           positionClass: 'toast-top-right'
         });
-        this.router.navigateByUrl('/pagos');
+        this.router.navigateByUrl('/pedidos');
       } else {
         this.toastr.error('<span class="now-ui-icons ui-1_bell-53"></span>Error al actualizar datos', '', {
           timeOut: 8000,

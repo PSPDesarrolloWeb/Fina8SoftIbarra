@@ -17,13 +17,14 @@ export const ROUTES: RouteInfo[] = [
 
     { path: '/empleados', title: 'Empleados',  icon:'users_circle-08', class: '' },
     { path: '/clientes', title: 'Clientes',  icon:'users_single-02', class: '' },
+    { path: '/productos', title: 'Productos',  icon:'shopping_box', class: '' },
 
     // para la pantalla 
-    { path: '/pagos', title: 'Pagos',  icon:'shopping_box', class: '' },
+    { path: '/pagos', title: 'Pagos',  icon:'business_money-coins', class: '' },
 
-    { path: '/pedidos', title: 'Pedidos',  icon:'shopping_box', class: '' },
+    { path: '/pedidos', title: 'Pedidos',  icon:'objects_spaceship', class: '' },
 
-    { path: '/detalles', title: 'Detalles',  icon:'shopping_box', class: '' },
+    { path: '/detalles', title: 'Detalles',  icon:'education_agenda-bookmark', class: '' },
 
 
 

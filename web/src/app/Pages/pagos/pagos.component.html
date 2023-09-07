@@ -14,7 +14,7 @@
               <thead class=" text-primary">
                 <th>#</th>
                 <th>Forma de pago</th>
-                <th>Codigo cliente</th>
+                <th>Cliente</th>
                 <th>Fecha pago</th>
                 <th>Total</th>
                 <th>OP</th>
@@ -23,11 +23,11 @@
                 <tr *ngFor="let datos of pagos; let i = index">
                   <td>{{i + 1 }}</td>
                   <td>{{ datos.forma_pago }}</td>
-                  <td>{{ datos.codigo_cliente }}</td>
+                  <td>{{ datos.cliente }}</td>
                   <td>{{ datos.fecha_pago }}</td>
                   <td>{{ datos.total }}</td>
                   <td>
-                    <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.id">✏️</button>
+                    <button type="button" class="btn btn-success" [routerLink]="'/editar-pago/' + datos.codigo">✏️</button>
                     <button type="button" class="btn btn-default"(click)="deletePago(datos.codigo)">🗑️</button>
                   </td>
                 </tr>

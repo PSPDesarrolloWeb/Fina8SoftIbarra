@@ -1,0 +1,52 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Lista de productos</h4>
+          <button type="button" class="btn btn-danger" [routerLink]="'/nuevo-producto'">Nuevo Producto</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive" style="overflow-x: auto;">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Gama</th>
+                <th>Dimensión</th>
+                <th>Proveedor</th>
+                <th>Descripción</th>
+                <th>Stock</th>
+                <th>P.Venta</th>
+                <th>P.Venta Proveedor</th>
+                <th>OP</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let datos of productos">
+                  <td>{{ datos.codigo }}</td>
+                  <td>{{ datos.nombre }}</td>
+                  <td>{{ datos.gama }}</td>
+                  <td>{{ datos.dim }}</td>
+                  <td>{{ datos.prov }}</td>
+                  <td>{{ datos.desc }}</td>
+                  <td>{{ datos.stock }}</td>
+                  <td>{{ datos.pv }}</td>
+                  <td>{{ datos.pvp }}</td>
+                  <td>
+                    <button type="button" class="btn btn-success" [routerLink]="'/editar-producto/' + datos.codigo">✏️</button>
+                    <button type="button" class="btn btn-default"(click)="deleteProducto(datos.codigo)">🗑️</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <button class="btn btn-primary floating-btn" (click)="scrollToTop()">
+    <i class="bi bi-chevron-up"></i>
+</button> -->
+</div>
